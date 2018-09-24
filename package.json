@@ -1,0 +1,20 @@
+{
+  "name": "loja_tenis",
+  "version": "1.0.0",
+  "description": "API Rest de Crud's simples de uma loja de tênis",
+  "main": "app.js",
+  "author": "Lucas Fernando de Assis",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon bin/server.js"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "mongodb": "^3.1.3",
+    "mongoose": "^5.2.8",
+    "morgan": "~1.9.0",
+    "nodemon": "^1.18.4"
+  }
+}
