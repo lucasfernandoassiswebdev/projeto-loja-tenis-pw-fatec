@@ -14,7 +14,7 @@ exports.get = async (req, res) => {
 exports.getById = async (req, res) => {
     return await marcaRepository.findById(req.params.id, function (error, marca) {
         if (marca == null)
-            treatError(true, 400, 'Marca buscada não existe', function (goWrong, error_code, error_message) {
+            treatError(true, 404, 'Marca buscada não existe', function (goWrong, error_code, error_message) {
                 if (goWrong)
                     return res.status(error_code).send({ message: error_message });
             });
