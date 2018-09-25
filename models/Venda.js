@@ -15,6 +15,10 @@ const schema = new Schema({
         tenis: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Funcionario"
+        },
+        quantidade: {
+            type: Number,
+            required: true
         }
     }
     ]
