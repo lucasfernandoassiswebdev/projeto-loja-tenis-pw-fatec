@@ -1,17 +1,12 @@
-const marcaRepository = require("../repositories/MarcasRepository");
+const marcaRepository = require("../repositories/MarcaRepository");
 const marcaService = require("../services/MarcaService");
 
 exports.get = async (req, res) => {
-    return res.status(200).send(await marcaRepository.find());
+    return await marcaService.get(req, res);
 };
 
 exports.getById = async (req, res) => {
-    var tenis = await marcaRepository.findById(req.params.id);
-
-    if (tenis != null)
-        return res.status(200).send(tenis);
-
-    return res.status(404).send({ message: 'Marca não encontrada' });
+    return await marcaService.getById(req, res);
 };
 
 exports.post = async (req, res) => {
