@@ -18,12 +18,16 @@ const schema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Sola"
     },
-    tamanhos_disponiveis: {
-        type: Number,
-        required: true,
-        enum: [28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
-        default: 38
-    },
+    estoque: [{
+        tamanho: {
+            type: Number,
+            required: true
+        },
+        quantidade_disponivel: {
+            type: Number,
+            required: true
+        }
+    }],
     valor: {
         type: Number,
         required: true
