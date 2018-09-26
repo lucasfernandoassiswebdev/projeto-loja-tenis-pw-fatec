@@ -1,4 +1,4 @@
-const solaRepository = require("../repositories/SolaRepository");
+const solaRepository = require('../repositories/SolaRepository');
 const serviceExceptions = require('./exceptions/serviceExceptions');
 
 exports.get = async (req, res) => {

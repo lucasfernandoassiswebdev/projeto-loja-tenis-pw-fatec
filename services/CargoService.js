@@ -1,4 +1,5 @@
-const cargoRepository = require("../repositories/CargoRepository");
+const cargoRepository = require('../repositories/CargoRepository');
+const funcionarioRepository = require('../repositories/FuncionarioRepository');
 const serviceExceptions = require('./exceptions/serviceExceptions');
 
 exports.get = async (req, res) => {
@@ -84,14 +85,30 @@ exports.delete = async (req, res) => {
                         return res.status(error_code).send({ message: error_message });
                 });
             else
-                cargoRepository.delete(req.params.id, function (error) {
-                    serviceExceptions.treatError(error, 500, 'Algo deu errado ao excluir o cargo', function (goWrong, error_code, error_message) {
+                checkEmployee(req.params.id, function (error, goWrongCheck) {
+                    serviceExceptions.treatError(error, 500, 'Algo deu errado ao processar a sua requisição', function (goWrong, error_code, error_message) {
                         if (goWrong)
                             return res.status(error_code).send({ message: error_message });
 
-                        return res.status(204).send();
+                        if (goWrongCheck)
+                            return res.status(428).send({ message: 'Já existem funcionários vinculados a este cargo, por favor delete-os antes' });
+                    })
+
+                    cargoRepository.delete(req.params.id, function (error) {
+                        serviceExceptions.treatError(error, 500, 'Algo deu errado ao excluir o cargo', function (goWrong, error_code, error_message) {
+                            if (goWrong)
+                                return res.status(error_code).send({ message: error_message });
+
+                            return res.status(204).send();
+                        });
                     });
                 });
         });
     });
 };
+
+function checkEmployee(id_cargo, callback) {
+    funcionarioRepository.findByCargo(id_cargo, function (error, lista) {
+        callback(error, !lista);
+    });
+}

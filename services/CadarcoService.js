@@ -1,4 +1,4 @@
-const cadarcoRepository = require("../repositories/CadarcoRepository");
+const cadarcoRepository = require('../repositories/CadarcoRepository');
 const serviceExceptions = require('./exceptions/serviceExceptions');
 
 exports.get = async (req, res) => {
