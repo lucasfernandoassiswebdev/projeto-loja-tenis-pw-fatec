@@ -60,7 +60,7 @@ exports.update = async (id, cargo_data, callback) => {
 }
 
 exports.delete = async (id, callback) => {
-    await Cargo.findOneAndDelete(id, function (error) {
+    await Cargo.findOneAndRemove({ _id: id }, function (error) {
         callback(error);
     });
 };

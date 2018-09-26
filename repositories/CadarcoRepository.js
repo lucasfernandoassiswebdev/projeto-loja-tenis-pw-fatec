@@ -60,7 +60,7 @@ exports.update = async (id, cadarco_data, callback) => {
 }
 
 exports.delete = async (id, callback) => {
-    await Cadarco.findOneAndDelete(id, function (error) {
+    await Cadarco.findOneAndRemove({ _id: id }, function (error) {
         callback(error);
     });
 };

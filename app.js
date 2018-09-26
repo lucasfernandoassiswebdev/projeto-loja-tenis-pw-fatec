@@ -27,7 +27,6 @@ const Sola = require('./models/Sola');
 const Tenis = require('./models/Tenis');
 const Venda = require('./models/Venda');
 
-
 const cadarcoRouter = require('./routes/CadarcoRoutes');
 //const funcionarioRouter = require('./routes/FuncionarioRoutes');
 const cargoRouter = require('./routes/CargoRoutes');

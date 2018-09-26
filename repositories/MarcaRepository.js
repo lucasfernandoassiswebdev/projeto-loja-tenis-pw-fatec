@@ -60,7 +60,7 @@ exports.update = async (id, marca_data, callback) => {
 }
 
 exports.delete = async (id, callback) => {
-    await Marca.findOneAndDelete(id, function (error) {
+    await Marca.findOneAndRemove({ _id: id }, function (error) {
         callback(error);
     });
 };

@@ -60,7 +60,7 @@ exports.update = async (id, sola_data, callback) => {
 }
 
 exports.delete = async (id, callback) => {
-    await Sola.findOneAndDelete(id, function (error) {
+    await Sola.findOneAndRemove({ _id: id }, function (error) {
         callback(error);
     });
 };
