@@ -28,14 +28,14 @@ const Tenis = require('./models/Tenis');
 const Venda = require('./models/Venda');
 
 
-//const cadarcoRouter = require('./routes/CadarcoRoutes');
+const cadarcoRouter = require('./routes/CadarcoRoutes');
 //const cargoRouter = require('./routes/CargoRoutes');
 //const funcionarioRouter = require('./routes/FuncionarioRoutes');
 const marcaRouter = require('./routes/MarcaRoutes');
 //const tenisRouter = require('./routes/TenisRoutes');
 //const vendaRouter = require('./routes/VendaRoutes');
 
-//app.use('/cadarcos', cadarcoRouter);
+app.use('/cadarcos', cadarcoRouter);
 //app.use('/cargos', cargoRouter);
 //app.use('/funcionarios', funcionarioRouter);
 app.use('/marcas', marcaRouter);

@@ -1,22 +1,21 @@
-const marcaRepository = require("../repositories/MarcaRepository");
-const marcaService = require("../services/MarcaService");
+const cadarcoService = require("../services/CadarcoService");
 
 exports.get = async (req, res) => {
-    return marcaService.get(req, res);
+    return await cadarcoService.get(req, res);
 };
 
 exports.getById = async (req, res) => {
-    return marcaService.getById(req, res);
+    return await cadarcoService.getById(req, res);
 };
 
 exports.post = async (req, res) => {
-    return await marcaService.post(req, res);
+    return await cadarcoService.post(req, res);
 };
 
 exports.put = async (req, res) => {
-    return await marcaService.put(req, res);
+    return await cadarcoService.put(req, res);
 }
 
 exports.delete = async (req, res) => {
-    return await marcaService.delete(req, res);
+    return await cadarcoService.delete(req, res);
 };

@@ -1,4 +1,3 @@
-const marcaRepository = require("../repositories/MarcaRepository");
 const marcaService = require("../services/MarcaService");
 
 exports.get = async (req, res) => {
