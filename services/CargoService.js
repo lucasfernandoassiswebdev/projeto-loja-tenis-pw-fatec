@@ -84,7 +84,7 @@ exports.delete = async (req, res) => {
                     if (goWrong)
                         return res.status(error_code).send({ message: error_message });
                 });
-            else
+            else {
                 checkEmployee(req.params.id, function (error, goWrongCheck) {
                     serviceExceptions.treatError(error, 500, 'Algo deu errado ao processar a sua requisição', function (goWrong, error_code, error_message) {
                         if (goWrong)
@@ -92,23 +92,24 @@ exports.delete = async (req, res) => {
 
                         if (goWrongCheck)
                             return res.status(428).send({ message: 'Já existem funcionários vinculados a este cargo, por favor delete-os antes' });
-                    })
 
-                    cargoRepository.delete(req.params.id, function (error) {
-                        serviceExceptions.treatError(error, 500, 'Algo deu errado ao excluir o cargo', function (goWrong, error_code, error_message) {
-                            if (goWrong)
-                                return res.status(error_code).send({ message: error_message });
+                        cargoRepository.delete(req.params.id, function (error) {
+                            serviceExceptions.treatError(error, 500, 'Algo deu errado ao excluir o cargo', function (goWrong, error_code, error_message) {
+                                if (goWrong)
+                                    return res.status(error_code).send({ message: error_message });
 
-                            return res.status(204).send();
+                                return res.status(204).send();
+                            });
                         });
-                    });
+                    })
                 });
+            }
         });
     });
 };
 
 function checkEmployee(id_cargo, callback) {
     funcionarioRepository.findByCargo(id_cargo, function (error, lista) {
-        callback(error, !lista);
+        callback(error, lista);
     });
 }

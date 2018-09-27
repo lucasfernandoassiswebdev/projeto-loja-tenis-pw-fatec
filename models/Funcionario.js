@@ -7,7 +7,7 @@ const schema = new Schema({
         required: true
     },
     cpf: {
-        type: Number,
+        type: String,
         required: true
     },
     cargo: {

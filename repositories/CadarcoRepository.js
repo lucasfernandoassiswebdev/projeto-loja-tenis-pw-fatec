@@ -48,10 +48,15 @@ exports.update = async (id, cadarco_data, callback) => {
         if (error)
             callback(error);
 
-        cadarco.nome = cadarco_data.nome;
-        cadarco.avaliacao_media = (cadarco_data.avaliacao_media != undefined && cadarco_data.avaliacao_media != null)
-            ? cadarco_data.avaliacao_media
-            : Cadarco.avaliacao_media;
+        cadarco.nome = (cadarco_data.nome != undefined && cadarco_data.nome != null)
+            ? cadarco_data.nome
+            : cadarco.nome;
+        cadarco.material = (cadarco_data.material != undefined && cadarco_data.material != null)
+            ? cadarco_data.material
+            : Cadarco.material;
+        cadarco.valor = (cadarco_data.valor != undefined && cadarco_data.valor != null)
+            ? cadarco_data.valor
+            : Cadarco.valor;
 
         cadarco.save(function (error) {
             callback(error);

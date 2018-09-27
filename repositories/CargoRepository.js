@@ -48,12 +48,14 @@ exports.update = async (id, cargo_data, callback) => {
         if (error)
             callback(error);
 
-            cargo.nome = cargo_data.nome;
-            cargo.avaliacao_media = (cargo_data.avaliacao_media != undefined && cargo_data.avaliacao_media != null)
+        cargo.nome = (cargo_data.nome != undefined && cargo_data.nome != null)
+            ? cargo_data.nome
+            : cargo.nome;
+        cargo.avaliacao_media = (cargo_data.avaliacao_media != undefined && cargo_data.avaliacao_media != null)
             ? cargo_data.avaliacao_media
             : cargo.avaliacao_media;
 
-            cargo.save(function (error) {
+        cargo.save(function (error) {
             callback(error);
         });
     });

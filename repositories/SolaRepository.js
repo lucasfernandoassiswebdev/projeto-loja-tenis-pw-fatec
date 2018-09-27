@@ -48,10 +48,18 @@ exports.update = async (id, sola_data, callback) => {
         if (error)
             callback(error);
 
-        sola.nome = sola_data.nome;
-        sola.avaliacao_media = (sola_data.avaliacao_media != undefined && sola_data.avaliacao_media != null)
-            ? sola_data.avaliacao_media
-            : Sola.avaliacao_media;
+        sola.nome = (sola_data.nome != undefined && sola_data.nome != null)
+            ? sola_data.nome
+            : Sola.nome;
+        sola.material = (sola_data.material != undefined && sola_data.material != null)
+            ? sola_data.material
+            : Sola.material;
+        sola.durabilidade_media = (sola_data.durabilidade_media != undefined && sola_data.durabilidade_media != null)
+            ? sola_data.durabilidade_media
+            : Sola.durabilidade_media;
+        sola.valor = (sola_data.valor != undefined && sola_data.valor != null)
+            ? sola_data.valor
+            : Sola.valor;
 
         sola.save(function (error) {
             callback(error);

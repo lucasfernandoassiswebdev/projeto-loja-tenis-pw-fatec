@@ -48,7 +48,9 @@ exports.update = async (id, marca_data, callback) => {
         if (error)
             callback(error);
 
-        marca.nome = marca_data.nome;
+        marca.nome = (marca_data.nome != undefined && marca_data.nome != null)
+            ? marca_data.nome
+            : marca.nome;
         marca.avaliacao_media = (marca_data.avaliacao_media != undefined && marca_data.avaliacao_media != null)
             ? marca_data.avaliacao_media
             : marca.avaliacao_media;

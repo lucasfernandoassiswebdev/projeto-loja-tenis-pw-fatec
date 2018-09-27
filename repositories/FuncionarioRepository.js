@@ -28,15 +28,6 @@ exports.findByName = async (name, callback) => {
     });
 };
 
-exports.findByCargo = async (id, callback) => {
-    return await Funcionario.find({ cargo: id }, function (error, funcionarios) {
-        if (typeof callback === "function")
-            callback(error, funcionario);
-
-        return funcionarios;
-    });
-}
-
 exports.findByNameLike = async (name, callback) => {
     return await Funcionario.find({ nome: new RegExp('^' + name + '$', "i") }, function (error, funcionarios) {
         if (typeof callback === "function")
@@ -44,8 +35,26 @@ exports.findByNameLike = async (name, callback) => {
     });
 };
 
+exports.findByCargo = async (id, callback) => {
+    return await Funcionario.find({ cargo: id }, function (error, funcionarios) {
+        if (typeof callback === "function")
+            callback(error, funcionarios);
+
+        return funcionarios;
+    });
+}
+
+exports.findByCpf = async (cpf, callback) => {
+    return await Funcionario.find({ cpf: cpf }, function (error, funcionarios) {
+        if (typeof callback === "function")
+            callback(error, funcionarios);
+
+        return funcionarios;
+    });
+}
+
 exports.save = async (funcionario_data, callback) => {
-    var funcionario = new funcionario(funcionario_data);
+    var funcionario = new Funcionario(funcionario_data);
     await funcionario.save(function (error) {
         if (typeof callback === "function")
             callback(error);
@@ -57,10 +66,15 @@ exports.update = async (id, funcionario_data, callback) => {
         if (error)
             callback(error);
 
-        funcionario.nome = funcionario_data.nome;
-        funcionario.avaliacao_media = (funcionario_data.avaliacao_media != undefined && funcionario_data.avaliacao_media != null)
-            ? funcionario_data.avaliacao_media
-            : Funcionario.avaliacao_media;
+        funcionario.nome = (funcionario_data.nome != undefined && funcionario_data.nome != null)
+            ? funcionario_data.nome
+            : funcionario.nome;
+        funcionario.cpf = (funcionario_data.cpf != undefined && funcionario_data.cpf != null)
+            ? funcionario_data.cpf
+            : funcionario.cpf;
+        funcionario.cargo = (funcionario_data.cargo != undefined && funcionario_data.cargo != null)
+            ? funcionario_data.cargo
+            : funcionario.cargo;
 
         funcionario.save(function (error) {
             callback(error);

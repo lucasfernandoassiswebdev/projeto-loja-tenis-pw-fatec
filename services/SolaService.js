@@ -14,7 +14,7 @@ exports.get = async (req, res) => {
 
 exports.getById = async (req, res) => {
     return await solaRepository.findById(req.params.id, function (error, sola) {
-        if (cadarco == null)
+        if (sola == null)
             serviceExceptions.treatError(true, 404, 'Sola buscada não existe', function (goWrong, error_code, error_message) {
                 if (goWrong)
                     return res.status(error_code).send({ message: error_message });
