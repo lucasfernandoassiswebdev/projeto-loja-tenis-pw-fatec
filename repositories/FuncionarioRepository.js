@@ -16,7 +16,7 @@ exports.findById = async (id, callback) => {
             callback(error, funcionario);
 
         return funcionario;
-    });
+    }).populate('cargo');
 };
 
 exports.findByName = async (name, callback) => {

@@ -16,7 +16,7 @@ exports.findById = async (id, callback) => {
             callback(error, tenis);
 
         return tenis;
-    });
+    }).populate('tipo_cadarco tipo_sola marca');
 };
 
 exports.findByName = async (name, callback) => {
@@ -36,8 +36,8 @@ exports.findByNameLike = async (name, callback) => {
 };
 
 exports.save = async (tenis_data, callback) => {
-    var tenis = new tenis(tenis_data);
-    await Tenis.save(function (error) {
+    var tenis = new Tenis(tenis_data);
+    await tenis.save(function (error) {
         if (typeof callback === "function")
             callback(error);
     });

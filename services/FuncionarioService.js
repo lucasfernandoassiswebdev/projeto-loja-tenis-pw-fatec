@@ -160,7 +160,7 @@ function checkVendas(id_funcionario, callback) {
 function checkCpf(cpf, callback) {
     if (cpf != undefined)
         funcionarioRepository.findByCpf(cpf, function (error, lista) {
-            callback(error, lista);
+            callback(error, !lista);
         });
     else
         callback(false, false);
@@ -169,7 +169,7 @@ function checkCpf(cpf, callback) {
 function checkCargo(id_cargo, callback) {
     if (id_cargo != undefined)
         cargoRepository.findById(id_cargo, function (error, cargo) {
-            callback(error, cargo);
+            callback(error, !cargo);
         });
     else
         callback(false, false);

@@ -30,22 +30,12 @@ exports.getById = async (req, res) => {
 }
 
 exports.post = async (req, res) => {
-    serviceExceptions.validateAndSave(req, false, vendaRepository, function (error, exists) {
-        serviceExceptions.treatError(error, 500, 'Algo deu errado ao salvar a venda', function () {
-            if (exists)
-                serviceExceptions.treatError(true, 500, 'Já existe uma venda com este nome cadastrado!', function (goWrong, error_code, error_message) {
-                    if (goWrong)
-                        return res.status(error_code).send({ message: error_message });
-                });
-            else
-                vendaRepository.save(req.body, function (error) {
-                    serviceExceptions.treatError(error, 500, 'Algo deu errado ao salvar a venda', function (goWrong, error_code, error_message) {
-                        if (goWrong)
-                            return res.status(error_code).send({ message: error_message });
+    vendaRepository.save(req.body, function (error) {
+        serviceExceptions.treatError(error, 500, 'Algo deu errado ao salvar a venda', function (goWrong, error_code, error_message) {
+            if (goWrong)
+                return res.status(error_code).send({ message: error_message });
 
-                        return res.status(201).send();
-                    });
-                });
+            return res.status(201).send();
         });
     });
 };

@@ -14,7 +14,7 @@ const schema = new Schema({
     tenis_venda: [{
         tenis: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Funcionario"
+            ref: "Tenis"
         },
         quantidade: {
             type: Number,

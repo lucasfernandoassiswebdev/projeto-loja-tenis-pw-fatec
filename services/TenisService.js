@@ -40,15 +40,46 @@ exports.post = async (req, res) => {
                     if (goWrong)
                         return res.status(error_code).send({ message: error_message });
                 });
-            else
-                tenisRepository.save(req.body, function (error) {
-                    serviceExceptions.treatError(error, 500, 'Algo deu errado ao salvar o tênis', function (goWrong, error_code, error_message) {
+            else {
+                checkCadarco(req.body.cadarco, function (error, goWrongCheck) {
+                    serviceExceptions.treatError(error, 500, 'Algo deu errado ao processar a sua requisição', function (goWrong, error_code, error_message) {
                         if (goWrong)
                             return res.status(error_code).send({ message: error_message });
 
-                        return res.status(201).send();
+                        if (goWrongCheck)
+                            return res.status(428).send({ message: 'O cadarço que está tentando ser vinculado não existe' });
+
+                        checkSola(req.body.sola, function (error, goWrongcheckSola) {
+                            serviceExceptions.treatError(error, 500, 'Algo deu errado ao processar a sua requisição', function (goWrong, error_code, error_message) {
+                                if (goWrong)
+                                    return res.status(error_code).send({ message: error_message });
+
+                                if (goWrongcheckSola)
+                                    return res.status(428).send({ message: 'A sola que está tentando ser vinculada não existe' });
+
+                                checkMarca(req.body.marca, function (error, goWrongCheckMarca) {
+                                    serviceExceptions.treatError(error, 500, 'Algo deu errado ao processar a sua requisição', function (goWrong, error_code, error_message) {
+                                        if (goWrong)
+                                            return res.status(error_code).send({ message: error_message });
+
+                                        if (goWrongcheckSola)
+                                            return res.status(428).send({ message: 'A marca que está tentando ser vinculada não existe' });
+
+                                        tenisRepository.save(req.body, function (error) {
+                                            serviceExceptions.treatError(error, 500, 'Algo deu errado ao salvar o tênis', function (goWrong, error_code, error_message) {
+                                                if (goWrong)
+                                                    return res.status(error_code).send({ message: error_message });
+
+                                                return res.status(201).send();
+                                            });
+                                        });
+                                    });
+                                });
+                            })
+                        });
                     });
                 });
+            }
         });
     });
 };

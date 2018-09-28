@@ -12,7 +12,7 @@ exports.validateAndSave = async (req, byId, repository, callback) => {
     }
 };
 
-exports.treatError = (error, code, message, callback) => {
+exports.treatError = (error, code, message, callback) => {    
     var error_code = (code != null && code != undefined) ? code : 500;
     var error_message = (message != undefined && message != null && message != '') ? message : 'Ocorreu um erro ao processar sua requisição';
 
