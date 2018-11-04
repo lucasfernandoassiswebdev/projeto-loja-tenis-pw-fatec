@@ -35,6 +35,12 @@ const solaRouter = require('./routes/SolaRoutes');
 const tenisRouter = require('./routes/TenisRoutes');
 const vendaRouter = require('./routes/VendaRoutes');
 
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 app.use('/cadarcos', cadarcoRouter);
 app.use('/funcionarios', funcionarioRouter);
 app.use('/cargos', cargoRouter);

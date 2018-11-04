@@ -1,0 +1,26 @@
+<mat-card-title>
+  {{ titulo }}
+</mat-card-title>
+
+<mat-card-content>
+
+  <form class="form-container">
+
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+      <input matInput placeholder="Informe o nome do cadarço" required name="nome" [(ngModel)]="cadarco.nome">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Material</mat-label>
+      <input matInput placeholder="Informe a descrição do cadarço" required name="material" [(ngModel)]="cadarco.material">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Valor</mat-label>
+      <input matInput placeholder="Informe a descrição do cadarço" required name="valor" [(ngModel)]="cadarco.valor">
+    </mat-form-field>
+
+  </form>
+
+</mat-card-content>

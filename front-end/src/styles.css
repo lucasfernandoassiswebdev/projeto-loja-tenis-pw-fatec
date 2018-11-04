@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+    margin: 0;
+ }
+ 
+ .mat-cell, .mat-header-cell {
+    padding: 6px !important;
+ }
+ 
+ .mat-row {
+    height: auto !important;
+ }
+ 
+ .main-container {
+    margin: 20px;
+ }
+ 
+ .form-container {
+   display: flex;
+   flex-direction: column;
+ }
+ 
+ .form-container > * {
+   width: 100%;
+ }
+ 
+ .div-checkbox {
+   margin-top: 16px;
+ }
