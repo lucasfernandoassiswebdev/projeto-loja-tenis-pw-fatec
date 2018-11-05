@@ -1,0 +1,26 @@
+<mat-card-title>
+  Listagem de Cargos
+</mat-card-title>
+
+<mat-card-actions>
+  <a mat-raised-button href="cargo/new" color="accent">Novo Cargo</a>
+</mat-card-actions>
+
+<mat-card-content>
+  <table mat-table [dataSource]="cargos">
+    
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef>Nome</th>
+      <td mat-cell *matCellDef="let cadarco">{{cadarco.nome}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nivel_hierarquico">
+      <th mat-header-cell *matHeaderCellDef>Nível Hierárquico</th>
+      <td mat-cell *matCellDef="let cadarco">{{cadarco.nivel_hierarquico}}</td>
+    </ng-container>
+        
+    <tr mat-header-row *matHeaderRowDef="visibleColumns"></tr>
+    <tr mat-row *matRowDef="let linhaTab; columns: visibleColumns"></tr>
+    
+  </table>
+</mat-card-content>

@@ -12,18 +12,23 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CadarcoListComponent } from './components/cadarco/cadarco-list/cadarco-list.component';
 import { CadarcoFormComponent } from './components/cadarco/cadarco-form/cadarco-form.component';
+import { CargoListComponent } from './components/cargo/cargo-list/cargo-list.component';
+import { CargoFormComponent } from './components/cargo/cargo-form/cargo-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CadarcoListComponent,
-    CadarcoFormComponent
+    CadarcoFormComponent,
+    CargoListComponent,
+    CargoFormComponent
   ],
   imports: [
     BrowserModule,
@@ -31,13 +36,14 @@ import { CadarcoFormComponent } from './components/cadarco/cadarco-form/cadarco-
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule,
     MatToolbarModule,
     MatCardModule,
     MatTableModule,
-    MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule    
   ],
   providers: [],
   bootstrap: [AppComponent]
