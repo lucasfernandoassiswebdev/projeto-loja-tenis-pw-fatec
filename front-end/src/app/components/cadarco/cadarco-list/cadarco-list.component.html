@@ -25,9 +25,15 @@
     </ng-container>
 
     <ng-container matColumnDef="buttons">
-      <button mat-mini-fab>
-        <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
-      </button>
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let cadarco">
+        <button mat-mini-fab color="primary">
+          <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+        </button>
+        <button mat-mini-fab style="margin-left: 5px; background-color: #D50000">
+          <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+        </button>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="visibleColumns"></tr>

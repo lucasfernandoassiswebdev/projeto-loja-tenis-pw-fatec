@@ -12,7 +12,8 @@ export class CadarcoListComponent implements OnInit {
   public visibleColumns: string[] = [
     'nome',
     'material',
-    'valor'
+    'valor',
+    'buttons'
   ];
 
   constructor(private cadarcoService: CadarcoService) { }

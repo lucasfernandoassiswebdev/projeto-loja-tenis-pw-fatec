@@ -11,7 +11,8 @@ export class CargoListComponent implements OnInit {
 
   public visibleColumns: string[] = [
     'nome',
-    'nivel_hierarquico'
+    'nivel_hierarquico',
+    'buttons'
   ];
 
   constructor(private cadarcoService: CargoService) { }

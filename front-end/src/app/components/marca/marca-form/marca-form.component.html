@@ -1,0 +1,21 @@
+<mat-card-title>
+  {{ titulo }}
+</mat-card-title>
+
+<mat-card-content>
+
+  <form class="form-container">
+
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+      <input matInput placeholder="Informe o nome da marca" required name="nome" [(ngModel)]="marca.nome">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Avaliação Média</mat-label>
+      <input matInput placeholder="Informe a avaliação média da marca" required name="avaliacao_media" [(ngModel)]="marca.avaliacao_media">
+    </mat-form-field>
+    
+  </form>
+
+</mat-card-content>

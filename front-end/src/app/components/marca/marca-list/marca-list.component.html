@@ -1,33 +1,33 @@
 <mat-card-title>
-  Listagem de Cargos
+  Listagem de Marcas
 </mat-card-title>
 
 <mat-card-actions>
-  <a mat-raised-button href="cargo/new" color="accent">Novo Cargo</a>
+  <a mat-raised-button href="marca/new" color="accent">Nova Marca</a>
 </mat-card-actions>
 
 <mat-card-content>
-  <table mat-table [dataSource]="cargos">
+  <table mat-table [dataSource]="marcas">
 
     <ng-container matColumnDef="nome">
       <th mat-header-cell *matHeaderCellDef>Nome</th>
-      <td mat-cell *matCellDef="let cargo">{{cargo.nome}}</td>
+      <td mat-cell *matCellDef="let marca">{{marca.nome}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="nivel_hierarquico">
-      <th mat-header-cell *matHeaderCellDef>Nível Hierárquico</th>
-      <td mat-cell *matCellDef="let cargo">{{cargo.nivel_hierarquico}}</td>
+    <ng-container matColumnDef="avaliacao_media">
+      <th mat-header-cell *matHeaderCellDef>Avaliação Média</th>
+      <td mat-cell *matCellDef="let marca">{{marca.avaliacao_media}}</td>
     </ng-container>
 
     <ng-container matColumnDef="buttons">
       <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let cargo">
-        <button mat-mini-fab color="primary">
+      <td mat-cell *matCellDef="let marca">
+        <a mat-mini-fab color="primary">
           <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
-        </button>
-        <button mat-mini-fab style="margin-left: 5px; background-color: #D50000">
+        </a>
+        <a mat-mini-fab style="margin-left: 5px; background-color: #D50000">
           <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
-        </button>
+        </a>
       </td>
     </ng-container>
 
