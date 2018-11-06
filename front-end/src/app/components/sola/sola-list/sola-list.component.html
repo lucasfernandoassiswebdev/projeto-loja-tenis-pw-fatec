@@ -1,33 +1,33 @@
 <mat-card-title>
-  Listagem de Cadarços
+  Listagem de Marcas
 </mat-card-title>
 
 <mat-card-actions>
-  <a mat-raised-button href="cadarco/new" color="accent">Novo Cadarço</a>
+  <a mat-raised-button href="marca/new" color="accent">Nova Marca</a>
 </mat-card-actions>
 
 <mat-card-content>
-  <table mat-table [dataSource]="cadarcos">
+  <table mat-table [dataSource]="solas">
 
     <ng-container matColumnDef="nome">
       <th mat-header-cell *matHeaderCellDef>Nome</th>
-      <td mat-cell *matCellDef="let cadarco">{{cadarco.nome}}</td>
+      <td mat-cell *matCellDef="let sola">{{sola.nome}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="material">
-      <th mat-header-cell *matHeaderCellDef>Material</th>
-      <td mat-cell *matCellDef="let cadarco">{{cadarco.material}}</td>
+    <ng-container matColumnDef="durabilidade_media">
+      <th mat-header-cell *matHeaderCellDef>Durabilidade Média</th>
+      <td mat-cell *matCellDef="let sola">{{sola.durabilidade_media}} meses</td>
     </ng-container>
 
     <ng-container matColumnDef="valor">
       <th mat-header-cell *matHeaderCellDef>Valor</th>
-      <td mat-cell *matCellDef="let cadarco">R$ {{cadarco.valor}}</td>
+      <td mat-cell *matCellDef="let sola">R$ {{sola.valor}}</td>
     </ng-container>
 
     <ng-container matColumnDef="buttons">
       <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let cadarco">
-        <a mat-mini-fab color="primary" href="cadarco/{{ cadarco._id }}">
+      <td mat-cell *matCellDef="let sola">
+        <a mat-mini-fab color="primary" href="sola/{{ sola._id }}">
           <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
         </a>
         <a mat-mini-fab style="margin-left: 5px; background-color: #D50000">

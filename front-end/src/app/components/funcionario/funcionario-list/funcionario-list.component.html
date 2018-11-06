@@ -7,26 +7,31 @@
 </mat-card-actions>
 
 <mat-card-content>
-  <table mat-table [dataSource]="marcas">
+  <table mat-table [dataSource]="solas">
 
     <ng-container matColumnDef="nome">
       <th mat-header-cell *matHeaderCellDef>Nome</th>
-      <td mat-cell *matCellDef="let marca">{{marca.nome}}</td>
+      <td mat-cell *matCellDef="let sola">{{sola.nome}}</td>
     </ng-container>
 
-    <ng-container matColumnDef="avaliacao_media">
-      <th mat-header-cell *matHeaderCellDef>Avaliação Média</th>
-      <td mat-cell *matCellDef="let marca">{{marca.avaliacao_media}}</td>
+    <ng-container matColumnDef="durabilidade_media">
+      <th mat-header-cell *matHeaderCellDef>Durabilidade Média</th>
+      <td mat-cell *matCellDef="let sola">{{sola.durabilidade_media}} meses</td>
+    </ng-container>
+
+    <ng-container matColumnDef="valor">
+      <th mat-header-cell *matHeaderCellDef>Valor</th>
+      <td mat-cell *matCellDef="let sola">R$ {{sola.valor}}</td>
     </ng-container>
 
     <ng-container matColumnDef="buttons">
       <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let marca">
-        <a mat-mini-fab color="primary" href="marca/{{ marca._id }}">
-          <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+      <td mat-cell *matCellDef="let sola">
+        <a mat-mini-fab color="primary" href="sola/{{ sola._id }}">
+          <mat-icon aria-label="Editar">edit</mat-icon>
         </a>
         <a mat-mini-fab style="margin-left: 5px; background-color: #D50000">
-          <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+          <mat-icon aria-label="Excluir">delete</mat-icon>
         </a>
       </td>
     </ng-container>

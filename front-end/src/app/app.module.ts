@@ -23,6 +23,10 @@ import { CargoListComponent } from './components/cargo/cargo-list/cargo-list.com
 import { CargoFormComponent } from './components/cargo/cargo-form/cargo-form.component';
 import { MarcaListComponent } from './components/marca/marca-list/marca-list.component';
 import { MarcaFormComponent } from './components/marca/marca-form/marca-form.component';
+import { SolaListComponent } from './components/sola/sola-list/sola-list.component';
+import { SolaFormComponent } from './components/sola/sola-form/sola-form.component';
+import { FuncionarioListComponent } from './components/funcionario/funcionario-list/funcionario-list.component';
+import { FuncionarioFormComponent } from './components/funcionario/funcionario-form/funcionario-form.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import { MarcaFormComponent } from './components/marca/marca-form/marca-form.com
     CargoListComponent,
     CargoFormComponent,
     MarcaListComponent,
-    MarcaFormComponent
+    MarcaFormComponent,
+    SolaListComponent,
+    SolaFormComponent,
+    FuncionarioListComponent,
+    FuncionarioFormComponent
   ],
   imports: [
     BrowserModule,
