@@ -1,0 +1,43 @@
+<mat-card-title>
+  Listagem de Vendas
+</mat-card-title>
+
+<mat-card-actions>
+  <a mat-raised-button href="venda/new" color="accent">Nova Venda</a>
+</mat-card-actions>
+
+<mat-card-content>
+  <table mat-table [dataSource]="vendas">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let venda">{{venda._id}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="data">
+      <th mat-header-cell *matHeaderCellDef>Data</th>
+      <td mat-cell *matCellDef="let venda">{{venda.data}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="funcionario">
+      <th mat-header-cell *matHeaderCellDef>Funcionario</th>
+      <td mat-cell *matCellDef="let venda">{{venda.funcionario.nome}} - {{venda.funcionario.cpf}} - {{venda.funcionario.cargo.nome}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="buttons">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let venda">
+        <a mat-mini-fab color="primary" href="venda/{{ venda._id }}">
+          <mat-icon aria-label="Editar">edit</mat-icon>
+        </a>
+        <a mat-mini-fab style="margin-left: 5px; background-color: #D50000">
+          <mat-icon aria-label="Excluir">delete</mat-icon>
+        </a>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="visibleColumns"></tr>
+    <tr mat-row *matRowDef="let linhaTab; columns: visibleColumns"></tr>
+
+  </table>
+</mat-card-content>

@@ -2,21 +2,59 @@ const mongoose = require("mongoose");
 const Venda = mongoose.model("Venda");
 
 exports.find = async (callback) => {
-    return await Venda.find({}, function (error, vendas) {
-        if (typeof callback === "function")
-            callback(error, vendas);
+    return await Venda.find({})
+        .populate({
+            path: 'funcionario',
+            populate: {
+                path: 'cargo',
+                model: 'Cargo'
+            }
+        })        
+        .exec(function (error, vendas) {
+            if (typeof callback === "function")
+                callback(error, vendas);
 
-        return vendas;
-    });
+            return vendas;
+        });
 };
 
 exports.findById = async (id, callback) => {
-    return await Venda.findById(id, function (error, venda) {
+    return await Venda.findById(id)
+    .populate({
+        path: 'funcionario',
+        populate: {
+            path: 'cargo',
+            model: 'Cargo'
+        }
+    })
+    .populate('tenis_venda.tenis')
+    .populate({
+        path: 'tenis_venda.tenis',
+        populate: {
+            path: 'marca',
+            model: 'Marca'
+        }
+    })
+    .populate({
+        path: 'tenis_venda.tenis',
+        populate: {
+            path: 'tipo_cadarco',
+            model: 'Cadarco'
+        }
+    })
+    .populate({
+        path: 'tenis_venda.tenis',
+        populate: {
+            path: 'tipo_sola',
+            model: 'Sola'
+        }
+    })
+    .exec(function (error, venda) {
         if (typeof callback === "function")
             callback(error, venda);
 
         return venda;
-    }).populate('funcionario tenis_venda.tenis');
+    });
 };
 
 exports.findByName = async (name, callback) => {

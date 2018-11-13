@@ -19,19 +19,18 @@ export class CargoFormComponent implements OnInit {
   public cargo: any = {};
 
   ngOnInit() {
-    this.activeRoute.params.subscribe(
-      params => {
-        if (params.id) {
-          this.cargoService.getById(params.id).subscribe(
-            obj => {
-              this.cargo = obj;
-              console.log(obj);
-              this.titulo = 'Editar Cargo';
-            },
-            erro => console.error(erro)
-          )
+      this.activeRoute.params.subscribe(
+        params => {
+          if (params.id) {
+            this.cargoService.getById(params.id).subscribe(
+              obj => {
+                this.cargo = obj;
+                this.titulo = 'Editar Cargo';
+              },
+              erro => console.error(erro)
+            )
+          }
         }
-      }
-    );
+      );
   }
 }

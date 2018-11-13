@@ -27,6 +27,8 @@ import { SolaListComponent } from './components/sola/sola-list/sola-list.compone
 import { SolaFormComponent } from './components/sola/sola-form/sola-form.component';
 import { FuncionarioListComponent } from './components/funcionario/funcionario-list/funcionario-list.component';
 import { FuncionarioFormComponent } from './components/funcionario/funcionario-form/funcionario-form.component';
+import { VendaListComponent } from './components/venda/venda-list/venda-list.component';
+import { VendaFormComponent } from './components/venda/venda-form/venda-form.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { FuncionarioFormComponent } from './components/funcionario/funcionario-f
     SolaListComponent,
     SolaFormComponent,
     FuncionarioListComponent,
-    FuncionarioFormComponent
+    FuncionarioFormComponent,
+    VendaListComponent,
+    VendaFormComponent
   ],
   imports: [
     BrowserModule,

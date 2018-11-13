@@ -25,7 +25,6 @@ export class MarcaFormComponent implements OnInit {
           this.marcaService.getById(params.id).subscribe(
             obj => {
               this.marca = obj;
-              console.log(obj);
               this.titulo = 'Editar Marca';
             },
             erro => console.error(erro)

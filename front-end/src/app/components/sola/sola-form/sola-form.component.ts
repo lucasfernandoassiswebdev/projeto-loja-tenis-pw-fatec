@@ -25,7 +25,6 @@ export class SolaFormComponent implements OnInit {
           this.solaService.getById(params.id).subscribe(
             obj => {
               this.sola = obj;
-              console.log(obj);
               this.titulo = 'Editar Sola';
             },
             erro => console.error(erro)

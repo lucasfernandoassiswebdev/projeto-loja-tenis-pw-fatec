@@ -25,7 +25,6 @@ export class CadarcoFormComponent implements OnInit {
           this.cadarcoService.getById(params.id).subscribe(
             obj => {
               this.cadarco = obj;
-              console.log(obj);
               this.titulo = 'Editar Cadarço';
             },
             erro => console.error(erro)

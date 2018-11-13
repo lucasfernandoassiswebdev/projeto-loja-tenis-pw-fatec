@@ -8,6 +8,10 @@ import { MarcaListComponent } from './components/marca/marca-list/marca-list.com
 import { MarcaFormComponent } from './components/marca/marca-form/marca-form.component';
 import { SolaListComponent } from './components/sola/sola-list/sola-list.component';
 import { SolaFormComponent } from './components/sola/sola-form/sola-form.component';
+import { FuncionarioListComponent } from './components/funcionario/funcionario-list/funcionario-list.component';
+import { FuncionarioFormComponent } from './components/funcionario/funcionario-form/funcionario-form.component';
+import { VendaListComponent } from './components/venda/venda-list/venda-list.component';
+import { VendaFormComponent } from './components/venda/venda-form/venda-form.component';
 
 const routes: Routes = [
   { path: 'cadarco', component: CadarcoListComponent },
@@ -21,7 +25,13 @@ const routes: Routes = [
   { path: 'marca/:id', component: MarcaFormComponent },
   { path: 'sola', component: SolaListComponent },
   { path: 'sola/new', component: SolaFormComponent },
-  { path: 'sola/:id', component: SolaFormComponent }
+  { path: 'sola/:id', component: SolaFormComponent },
+  { path: 'funcionario', component: FuncionarioListComponent },
+  { path: 'funcionario/new', component: FuncionarioFormComponent },
+  { path: 'funcionario/:id', component: FuncionarioFormComponent },
+  { path: 'venda', component: VendaListComponent },
+  { path: 'venda/new', component: VendaFormComponent },
+  { path: 'venda/:id', component: VendaFormComponent }
 ];
 
 @NgModule({

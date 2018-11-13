@@ -1,3 +1,21 @@
-<p>
-  funcionario-form works!
-</p>
+<mat-card-title>
+  {{ titulo }}
+</mat-card-title>
+
+<mat-card-content>
+
+  <form class="form-container">
+
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+      <input matInput placeholder="Informe o nome do funcionário" required name="nome" [(ngModel)]="funcionario.nome">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>CPF</mat-label>
+      <input matInput placeholder="Informe o CPF do funcionário" required name="cpf" [(ngModel)]="funcionario.cpf">
+    </mat-form-field>
+    
+  </form>
+
+</mat-card-content>

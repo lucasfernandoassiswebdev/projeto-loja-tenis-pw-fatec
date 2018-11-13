@@ -15,10 +15,10 @@ export class CargoListComponent implements OnInit {
     'buttons'
   ];
 
-  constructor(private cadarcoService: CargoService) { }
+  constructor(private cargoService: CargoService) { }
 
   ngOnInit() {
-    this.cadarcoService.get().subscribe(
+    this.cargoService.get().subscribe(
       data => this.cargos = data,
       error => console.error(error.message)
     );
