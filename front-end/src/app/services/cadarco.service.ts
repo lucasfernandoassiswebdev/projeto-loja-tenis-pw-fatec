@@ -20,8 +20,8 @@ export class CadarcoService {
     return this.http.post('http://localhost:3000/cadarcos', cadarco);
   }
 
-  put(id, cadarco) {
-    return this.http.put('http://localhost:3000/cadarcos/' + id, cadarco);
+  put(cadarco) {
+    return this.http.put('http://localhost:3000/cadarcos/' + cadarco._id, cadarco);
   }
 
   delete(id: String) {

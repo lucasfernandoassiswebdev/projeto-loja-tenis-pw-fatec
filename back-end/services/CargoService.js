@@ -90,7 +90,7 @@ exports.delete = async (req, res) => {
                         if (goWrong)
                             return res.status(error_code).send({ message: error_message });
 
-                        if (goWrongCheck)
+                        if (goWrongCheck && goWrongCheck.length > 0)
                             return res.status(428).send({ message: 'Já existem funcionários vinculados a este cargo, por favor delete-os antes' });
 
                         cargoRepository.delete(req.params.id, function (error) {

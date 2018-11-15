@@ -16,6 +16,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu';
 
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+
 import { MatMomentDateModule, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 import { MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
 
@@ -33,6 +36,8 @@ import { FuncionarioListComponent } from './components/funcionario/funcionario-l
 import { FuncionarioFormComponent } from './components/funcionario/funcionario-form/funcionario-form.component';
 import { VendaListComponent } from './components/venda/venda-list/venda-list.component';
 import { VendaFormComponent } from './components/venda/venda-form/venda-form.component';
+
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [

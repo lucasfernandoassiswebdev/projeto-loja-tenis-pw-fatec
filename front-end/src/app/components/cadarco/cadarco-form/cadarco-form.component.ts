@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CadarcoService } from '../../../services/cadarco.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-cadarco-form',
@@ -12,7 +13,8 @@ export class CadarcoFormComponent implements OnInit {
   constructor(
     private router: Router,
     private activeRoute: ActivatedRoute,
-    private cadarcoService: CadarcoService
+    private cadarcoService: CadarcoService,
+    private snackBar: MatSnackBar
   ) { }
 
   public titulo: String = 'Novo Cadarço';
@@ -44,18 +46,17 @@ export class CadarcoFormComponent implements OnInit {
   salvar() {
     let retorno: any;
     if (this.cadarco._id) {
-      retorno = this.cadarcoService.put(this.cadarco._id, this.cadarco);
+      retorno = this.cadarcoService.put(this.cadarco);
     } else {
       retorno = this.cadarcoService.post(this.cadarco);
     }
     retorno.subscribe(
       () => {
-        alert('Cadarço salvo com sucesso');
+        this.snackBar.open('Cadarço salvo com sucesso', 'OK', { duration: 2000 });
         this.router.navigate(['cadarco']);
       },
       error => {
-        alert('Erro ao salvar o cadarço: ' + error.message);
-        console.error(error);
+        this.snackBar.open('Erro ao salvar o artigo: ' + error.message, 'OK');
       }
     );
   }

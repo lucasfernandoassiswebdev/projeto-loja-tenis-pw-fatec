@@ -33,7 +33,7 @@ export class CadarcoListComponent implements OnInit {
           this.snackBar.open('Cadarço excluído com sucesso', 'Ok', { duration: 2000 });
           this.ngOnInit();
         },
-        erro => this.snackBar.open('ERRO AO EXCLUIR CADARÇO', 'OK'));
+        error => this.snackBar.open(error.error.message, 'OK'));
     }
   }
 }

@@ -33,3 +33,8 @@ body {
  td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   padding: 16px !important;
 }
+
+  .deleteButton {
+    margin-left: 5px !important;
+    background-color: #E53935 !important;
+  }
