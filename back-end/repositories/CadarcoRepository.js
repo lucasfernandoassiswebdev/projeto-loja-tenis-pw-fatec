@@ -53,10 +53,10 @@ exports.update = async (id, cadarco_data, callback) => {
             : cadarco.nome;
         cadarco.material = (cadarco_data.material != undefined && cadarco_data.material != null)
             ? cadarco_data.material
-            : Cadarco.material;
+            : cadarco.material;
         cadarco.valor = (cadarco_data.valor != undefined && cadarco_data.valor != null)
             ? cadarco_data.valor
-            : Cadarco.valor;
+            : cadarco.valor;
 
         cadarco.save(function (error) {
             callback(error);
