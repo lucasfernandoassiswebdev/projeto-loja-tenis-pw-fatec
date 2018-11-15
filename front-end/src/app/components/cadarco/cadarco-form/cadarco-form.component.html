@@ -13,14 +13,24 @@
 
     <mat-form-field>
       <mat-label>Material</mat-label>
-      <input matInput placeholder="Informe a descrição do cadarço" required name="material" [(ngModel)]="cadarco.material">
+      <mat-select placeholder="Selecione o material do cadarço" required name="material" [(ngModel)]="cadarco.material">
+        <mat-option *ngFor="let mat of materiais" [value]="mat.value">
+          {{ mat.value }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Valor</mat-label>
-      <input matInput placeholder="Informe a descrição do cadarço" required name="valor" [(ngModel)]="cadarco.valor">
+      <span matPrefix>R$ &nbsp;</span>
+      <input matInput type="number" placeholder="Informe o valor cadarço" required name="valor" [(ngModel)]="cadarco.valor">
     </mat-form-field>
 
   </form>
 
 </mat-card-content>
+
+<mat-card-actions class="center-buttons">
+  <button mat-flat-button color="primary" (click)="salvar()">Salvar</button>
+  <button mat-flat-button style="margin-left: 5px; background-color: #D50000; color: white" (click)="cancelar()">Cancelar</button>
+</mat-card-actions>

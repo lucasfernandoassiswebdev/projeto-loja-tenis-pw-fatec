@@ -9,7 +9,7 @@ const schema = new Schema({
     material: {
         type: String,
         required: true,
-        enum: ["Algodão", "Poliester", "Outro"],
+        enum: ["Algodão", "Poliester", "Elástico", "Outro"],
         default: "Algodão"
     },
     valor: {

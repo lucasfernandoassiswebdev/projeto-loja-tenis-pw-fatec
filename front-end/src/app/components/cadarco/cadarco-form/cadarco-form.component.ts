@@ -18,6 +18,13 @@ export class CadarcoFormComponent implements OnInit {
   public titulo: String = 'Novo Cadarço';
   public cadarco: any = {};
 
+  public materiais: any[] = [
+    { value: 'Algodão' },
+    { value: 'Poliester' },
+    { value: 'Elástico' },
+    { value: 'Outro' }
+  ];
+
   ngOnInit() {
     this.activeRoute.params.subscribe(
       params => {
@@ -32,5 +39,30 @@ export class CadarcoFormComponent implements OnInit {
         }
       }
     );
+  }
+
+  salvar() {
+    let retorno: any;
+    if (this.cadarco._id) {
+      retorno = this.cadarcoService.put(this.cadarco._id, this.cadarco);
+    } else {
+      retorno = this.cadarcoService.post(this.cadarco);
+    }
+    retorno.subscribe(
+      () => {
+        alert('Cadarço salvo com sucesso');
+        this.router.navigate(['cadarco']);
+      },
+      error => {
+        alert('Erro ao salvar o cadarço: ' + error.message);
+        console.error(error);
+      }
+    );
+  }
+
+  cancelar() {
+    if (confirm('Deseja realmente cancelar as alterações?')) {
+      this.router.navigate(['cadarco']);
+    }
   }
 }
