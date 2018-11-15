@@ -13,7 +13,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+import { MatMomentDateModule, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
+import { MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -44,7 +47,7 @@ import { VendaFormComponent } from './components/venda/venda-form/venda-form.com
     FuncionarioListComponent,
     FuncionarioFormComponent,
     VendaListComponent,
-    VendaFormComponent
+    VendaFormComponent    
   ],
   imports: [
     BrowserModule,
@@ -59,9 +62,14 @@ import { VendaFormComponent } from './components/venda/venda-form/venda-form.com
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule    
+    MatSelectModule,
+    MatMomentDateModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

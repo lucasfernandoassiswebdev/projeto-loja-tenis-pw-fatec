@@ -33,4 +33,27 @@ export class MarcaFormComponent implements OnInit {
       }
     );
   }
+
+  salvar() {
+    let retorno: any;
+    if (this.marca._id) {
+      retorno = this.marcaService.put(this.marca._id, this.marca);
+    } else {
+      retorno = this.marcaService.post(this.marca);
+    }
+    retorno.subscribe(
+      () => {
+        alert('Marca salvo com sucesso');
+        this.router.navigate(['marca']);
+      },
+      erro => {
+        alert('Erro ao salvar a marca: ' + erro.message);
+        console.error(erro);
+      }
+    );
+  }
+
+  cancelar() {
+    window.history.back();
+  }
 }
