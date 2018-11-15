@@ -54,6 +54,8 @@ export class MarcaFormComponent implements OnInit {
   }
 
   cancelar() {
-    window.history.back();
+    if (confirm('Deseja realmente cancelar as alterações?')) {
+      this.router.navigate(['marca']);
+    }
   }
 }
