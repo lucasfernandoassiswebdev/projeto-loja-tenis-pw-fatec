@@ -13,14 +13,20 @@
 
     <mat-form-field>
       <mat-label>Durabilidade Média</mat-label>
-      <input matInput placeholder="Informe a durabilidade média da sola" required name="durabilidade_media" [(ngModel)]="sola.durabilidade_media">
+      <input matInput type="number" placeholder="Informe a durabilidade média da sola" required name="durabilidade_media" [(ngModel)]="sola.durabilidade_media">
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Valor</mat-label>
-      <input matInput placeholder="Informe o valor da sola" required name="valor" [(ngModel)]="sola.valor">
+      <span matPrefix>R$ &nbsp;</span>
+      <input matInput type="number" placeholder="Informe o valor da sola" required name="valor" [(ngModel)]="sola.valor">
     </mat-form-field>
     
   </form>
 
 </mat-card-content>
+
+<mat-card-actions class="center-buttons">
+  <button mat-flat-button color="primary" (click)="salvar()">Salvar</button>
+  <button mat-flat-button style="margin-left: 5px; background-color: #D50000; color: white" (click)="cancelar()">Cancelar</button>
+</mat-card-actions>

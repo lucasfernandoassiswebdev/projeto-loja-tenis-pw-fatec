@@ -25,7 +25,7 @@
         <a mat-mini-fab color="primary" [routerLink]="marca._id">
           <mat-icon aria-label="Editar marca">edit</mat-icon>
         </a>
-        <button mat-mini-fab style="margin-left: 5px; background-color: #D50000" (click)="excluir(marca._id)">
+        <button mat-mini-fab class="deleteButton" (click)="excluir(marca._id)">
           <mat-icon aria-label="Excluir marca">delete</mat-icon>
         </button>
       </td>
