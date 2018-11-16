@@ -94,6 +94,7 @@ export class TenisFormComponent implements OnInit {
   }
 
   adicionarItem() {
+    console.log(this.tenis.estoque);
     this.tenis.estoque.push({
       tamanho: 0,
       quantidade_disponivel: 0

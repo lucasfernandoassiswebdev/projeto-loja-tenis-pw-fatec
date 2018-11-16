@@ -46,19 +46,18 @@
 
         <mat-card style="width: 25%">
             <h2>Estoque</h2>
-
             <div *ngFor="let item of tenis.estoque">
                 <div style="border: 1px solid black; margin-top: 6px; padding: 0px 10px">
                     <mat-form-field style="display: block">
                         <mat-label>Tamanho</mat-label>
-                        <input matInput type="number" placeholder="Informe o tamanho do tênis" required name="tamanho"
-                            value="{{item.tamanho}}">
+                        <input matInput type="number" placeholder="Informe o tamanho do tênis" required name="tamanho-{{item._id}}"
+                            [(ngModel)]="item.tamanho">
                     </mat-form-field>
 
                     <mat-form-field>
                         <mat-label>Quantidade disponível</mat-label>
-                        <input matInput type="number" placeholder="Informe a quantidade disponível" required name="quantidade_disponivel"
-                            value="{{item.quantidade_disponivel}}">
+                        <input matInput type="number" placeholder="Informe a quantidade disponível" required name="quantidade_disponivel-{{item._id}}"
+                            [(ngModel)]="item.quantidade_disponivel">
                     </mat-form-field>
                 </div>
             </div>
