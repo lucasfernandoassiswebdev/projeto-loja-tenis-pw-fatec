@@ -28,4 +28,14 @@ export class TenisListComponent implements OnInit {
     );
   }
 
+  excluir(id: String) {
+    if (confirm("Deseja realmente excluir o tênis?")) {
+      this.tenisService.delete(id).subscribe(
+        () => {
+          this.snackBar.open('Tênis excluído com sucesso', 'Ok', { duration: 2000 });
+          this.ngOnInit();
+        },
+        error => this.snackBar.open(error.error.message, 'OK'));
+    }
+  }
 }
