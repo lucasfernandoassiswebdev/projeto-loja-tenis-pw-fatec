@@ -36,7 +36,7 @@ export class CadarcoFormComponent implements OnInit {
               this.cadarco = obj;
               this.titulo = 'Editar Cadarço';
             },
-            error =>  this.snackBar.open('Erro ao buscar dados do cadarço' + error.message, 'OK')
+            error =>  this.snackBar.open('Erro ao buscar dados do cadarço ' + error.message, 'OK')
           )
         }
       }

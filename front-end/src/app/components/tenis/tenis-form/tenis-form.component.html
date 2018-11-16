@@ -1,3 +1,76 @@
-<p>
-  tenis-form works!
-</p>
+<mat-card-title>
+    {{ titulo }}
+</mat-card-title>
+
+<mat-card-content>
+
+    <form class="form-container">
+
+        <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input matInput placeholder="Informe o nome do tênis" required name="nome" [(ngModel)]="tenis.nome">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Marca</mat-label>
+            <mat-select placeholder="Selecione a marca do tênis" required name="marca" [(ngModel)]="tenis.marca._id">
+                <mat-option *ngFor="let marca of marcas" [value]="marca._id">
+                    {{ marca.nome }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Cadarço</mat-label>
+            <mat-select placeholder="Selecione o cadarço do tênis" required name="cadarco" [(ngModel)]="tenis.tipo_cadarco._id">
+                <mat-option *ngFor="let cadarco of cadarcos" [value]="cadarco._id">
+                    {{ cadarco.nome }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Sola</mat-label>
+            <mat-select placeholder="Selecione a sola do tênis" required name="sola" [(ngModel)]="tenis.tipo_sola._id">
+                <mat-option *ngFor="let sola of solas" [value]="sola._id">
+                    {{ sola.nome }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Valor</mat-label>
+            <span matPrefix>R$ &nbsp;</span>
+            <input matInput type="number" placeholder="Informe o valor do tênis" required name="valor" [(ngModel)]="tenis.valor">
+        </mat-form-field>
+
+        <mat-card style="width: 98%">
+            Estoque
+
+            <div *ngFor="let item of tenis.estoque">
+                <mat-form-field>
+                    <mat-label>Tamanho</mat-label>
+                    <input matInput type="number" placeholder="Informe o tamanho do tênis" required name="tamanho"
+                        value="item.tamanho">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Quantidade disponível</mat-label>
+                    <input matInput type="number" placeholder="Informe a quantidade disponível" required name="quantidade_disponivel"
+                        value="item.quantidade_disponivel">
+                </mat-form-field>
+            </div>
+
+            <button mat-mini-fab (click)="adicionarItem()" style="float: right; background-color: #00C853">
+                <mat-icon aria-label="Adicionar novo item">add</mat-icon>
+            </button>
+        </mat-card>
+
+    </form>
+
+</mat-card-content>
+
+<mat-card-actions class="center-buttons">
+    <button mat-flat-button color="primary" (click)="salvar()">Salvar</button>
+    <button mat-flat-button style="margin-left: 5px; background-color: #D50000; color: white" (click)="cancelar()">Cancelar</button>
+</mat-card-actions>
