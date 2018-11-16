@@ -7,7 +7,7 @@ exports.find = async (callback) => {
             callback(error, tenis);
 
         return tenis;
-    });
+    }).populate('tipo_cadarco tipo_sola marca');;
 };
 
 exports.findById = async (id, callback) => {
