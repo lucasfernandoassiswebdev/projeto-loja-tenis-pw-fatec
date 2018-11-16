@@ -47,7 +47,6 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="visibleColumns"></tr>
-    <tr mat-row *matRowDef="let linhaTab; columns: visibleColumns"></tr>
-
+    <tr mat-row *matRowDef="let linhaTab; columns: visibleColumns;"></tr>
   </table>
 </mat-card-content>

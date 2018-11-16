@@ -1,3 +1,16 @@
-<p>
-  venda-form works!
-</p>
+<mat-form-field>
+  <mat-label>Data da venda</mat-label>
+  <input matInput [matDatepicker]="data" placeholder="Selecione a data da venda" required name="data" [(ngModel)]="compra.data">
+  <mat-datepicker-toggle matSuffix [for]="data"></mat-datepicker-toggle>
+  <mat-datepicker #dataVenda></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Funcionário</mat-label>
+  <mat-select placeholder="Selecione o funcionário que efetuou a venda" required name="funcionario" [(ngModel)]="compra.funcoinario">
+      <mat-option *ngFor="let funcionario of funcionarios" [value]="funcionario._id">
+          {{ marca.nome }}
+      </mat-option>
+  </mat-select>
+</mat-form-field>
+

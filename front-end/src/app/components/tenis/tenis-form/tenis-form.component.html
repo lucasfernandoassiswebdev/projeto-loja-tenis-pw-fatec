@@ -44,27 +44,42 @@
             <input matInput type="number" placeholder="Informe o valor do tênis" required name="valor" [(ngModel)]="tenis.valor">
         </mat-form-field>
 
-        <mat-card style="width: 25%">
-            <h2>Estoque</h2>
-            <div *ngFor="let item of tenis.estoque">
-                <div style="border: 1px solid black; margin-top: 6px; padding: 0px 10px">
-                    <mat-form-field style="display: block">
-                        <mat-label>Tamanho</mat-label>
-                        <input matInput type="number" placeholder="Informe o tamanho do tênis" required name="tamanho-{{item._id}}"
-                            [(ngModel)]="item.tamanho">
-                    </mat-form-field>
+        <mat-card>
+            <mat-card-content>
+                <h2>Estoque</h2>
 
-                    <mat-form-field>
-                        <mat-label>Quantidade disponível</mat-label>
-                        <input matInput type="number" placeholder="Informe a quantidade disponível" required name="quantidade_disponivel-{{item._id}}"
-                            [(ngModel)]="item.quantidade_disponivel">
-                    </mat-form-field>
-                </div>
-            </div>
+                <mat-form-field>
+                    <mat-label>Tamanho</mat-label>
+                    <input matInput type="number" placeholder="Informe o tamanho do par" required name="tamanho" [(ngModel)]="tenis.tamanho">
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field>
+                    <mat-label>Quantidade disponível</mat-label>
+                    <input matInput type="number" placeholder="Informe a quantidade disponível do par" required name="quantidade_disponivel" [(ngModel)]="tenis.quantidade_disponivel">
+                </mat-form-field>
 
-            <button mat-mini-fab (click)="adicionarItem()" style="float: right; background-color: #00C853; margin-top: 10px;">
-                <mat-icon aria-label="Adicionar novo item">add</mat-icon>
-            </button>
+                <button mat-mini-fab (click)="adicionarItem()" style="margin-left: 5px; background-color: #00C853">
+                    <mat-icon aria-label="Adicionar novo item">add</mat-icon>
+                </button>
+
+                <table>
+                    <tr>
+                        <th>Tamanho</th>
+                        <th>Quantidade Disponível</th>
+                        <th></th>
+                    </tr>
+
+                    <tr *ngFor="let item of tenis.estoque; index as i">
+                        <td>{{ item.tamanho }}</td>
+                        <td>{{ item.quantidade_disponivel }}</td>
+                        <td>
+                            <button mat-mini-fab class="deleteButton" (click)="removerItem(i)">
+                                <mat-icon aria-label="Excluir item">delete</mat-icon>
+                            </button>
+                        </td>
+                    </tr>                 
+                </table>
+            </mat-card-content>
         </mat-card>
 
     </form>
