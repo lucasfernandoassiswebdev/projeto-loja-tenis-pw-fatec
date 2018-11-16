@@ -36,6 +36,8 @@ import { FuncionarioListComponent } from './components/funcionario/funcionario-l
 import { FuncionarioFormComponent } from './components/funcionario/funcionario-form/funcionario-form.component';
 import { VendaListComponent } from './components/venda/venda-list/venda-list.component';
 import { VendaFormComponent } from './components/venda/venda-form/venda-form.component';
+import { TenisListComponent } from './components/tenis/tenis-list/tenis-list.component';
+import { TenisFormComponent } from './components/tenis/tenis-form/tenis-form.component';
 
 registerLocaleData(localePt);
 
@@ -53,7 +55,9 @@ registerLocaleData(localePt);
     FuncionarioListComponent,
     FuncionarioFormComponent,
     VendaListComponent,
-    VendaFormComponent    
+    VendaFormComponent,
+    TenisListComponent,
+    TenisFormComponent    
   ],
   imports: [
     BrowserModule,
