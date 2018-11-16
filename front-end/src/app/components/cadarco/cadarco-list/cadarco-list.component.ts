@@ -22,7 +22,7 @@ export class CadarcoListComponent implements OnInit {
   ngOnInit() {
     this.cadarcoService.get().subscribe(
       data => this.cadarcos = data,
-      error => console.error(error.message)
+      error => this.snackBar.open('Erro ao listar cadarços ' + error.message, 'OK')
     );
   }
 

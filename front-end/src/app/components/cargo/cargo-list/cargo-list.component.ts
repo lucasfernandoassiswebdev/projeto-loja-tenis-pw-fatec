@@ -21,7 +21,7 @@ export class CargoListComponent implements OnInit {
   ngOnInit() {
     this.cargoService.get().subscribe(
       data => this.cargos = data,
-      error => console.error(error.message)
+      error => this.snackBar.open('Erro ao listar cargos ' + error.message, 'OK')
     );
   }
 

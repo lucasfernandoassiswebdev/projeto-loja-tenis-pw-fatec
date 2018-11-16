@@ -36,7 +36,7 @@ export class CadarcoFormComponent implements OnInit {
               this.cadarco = obj;
               this.titulo = 'Editar Cadarço';
             },
-            erro => console.error(erro)
+            error =>  this.snackBar.open('Erro ao buscar dados do cadarço' + error.message, 'OK')
           )
         }
       }
@@ -56,7 +56,7 @@ export class CadarcoFormComponent implements OnInit {
         this.router.navigate(['cadarco']);
       },
       error => {
-        this.snackBar.open('Erro ao salvar o artigo: ' + error.message, 'OK');
+        this.snackBar.open(error.error.message, 'OK');
       }
     );
   }

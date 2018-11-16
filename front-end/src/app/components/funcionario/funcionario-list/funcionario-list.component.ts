@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FuncionarioService } from '../../../services/funcionario.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-funcionario-list',
@@ -16,12 +17,24 @@ export class FuncionarioListComponent implements OnInit {
     'buttons'
   ];
 
-  constructor(private funcionarioService: FuncionarioService) { }
+  constructor(private funcionarioService: FuncionarioService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.funcionarioService.get().subscribe(
       data => this.funcionarios = data,
-      error => console.error(error.message)
+      error => this.snackBar.open('Erro ao listar funcionários ' + error.message, 'OK')
     );
+  }
+
+  excluir(id: String) {
+    if (confirm("Deseja realmente excluir o funcionário?")) {
+      this.funcionarioService.delete(id).subscribe(
+        () => {
+          this.snackBar.open('Funcionário excluído com sucesso', 'Ok', { duration: 2000 });
+          this.ngOnInit();
+        },
+        error => this.snackBar.open(error.error.message, 'OK')
+      )
+    }
   }
 }

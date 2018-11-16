@@ -15,7 +15,21 @@
       <mat-label>CPF</mat-label>
       <input matInput placeholder="Informe o CPF do funcionário" required name="cpf" [(ngModel)]="funcionario.cpf">
     </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Cargo</mat-label>
+      <mat-select placeholder="Selecione o cargo do funcionário" required name="cargo" [(ngModel)]="funcionario.cargo._id">
+        <mat-option *ngFor="let cargo of cargos" [value]="cargo._id">
+          {{ cargo.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     
   </form>
 
 </mat-card-content>
+
+<mat-card-actions class="center-buttons">
+  <button mat-flat-button color="primary" (click)="salvar()">Salvar</button>
+  <button mat-flat-button style="margin-left: 5px; background-color: #D50000; color: white" (click)="cancelar()">Cancelar</button>
+</mat-card-actions>

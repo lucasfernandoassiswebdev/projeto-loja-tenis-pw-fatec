@@ -21,19 +21,19 @@ export class CargoFormComponent implements OnInit {
   public cargo: any = {};
 
   ngOnInit() {
-      this.activeRoute.params.subscribe(
-        params => {
-          if (params.id) {
-            this.cargoService.getById(params.id).subscribe(
-              obj => {
-                this.cargo = obj;
-                this.titulo = 'Editar Cargo';
-              },
-              erro => console.error(erro)
-            )
-          }
+    this.activeRoute.params.subscribe(
+      params => {
+        if (params.id) {
+          this.cargoService.getById(params.id).subscribe(
+            obj => {
+              this.cargo = obj;
+              this.titulo = 'Editar Cargo';
+            },
+            error => this.snackBar.open('Erro ao buscar dados do cargo ' + error.message, 'OK')
+          )
         }
-      );
+      }
+    );
   }
 
   salvar() {
@@ -48,9 +48,7 @@ export class CargoFormComponent implements OnInit {
         this.snackBar.open('Cargo salvo com sucesso', 'OK', { duration: 2000 });
         this.router.navigate(['cargo']);
       },
-      error => {
-        this.snackBar.open('Erro ao salvar o cargo: ' + error.message, 'OK');
-      }
+      error => this.snackBar.open(error.error.message, 'OK')
     );
   }
 

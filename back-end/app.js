@@ -19,6 +19,12 @@ app.use(function (err, req, res, next) {
     res.status(500).send('Algo deu errado ao processar sua requisição');
 });
 
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 const Cadarco = require('./models/Cadarco');
 const Funcionario = require('./models/Funcionario');
 const Cargo = require('./models/Cargo');
@@ -42,11 +48,5 @@ app.use('/marcas', marcaRouter);
 app.use('/solas', solaRouter);
 app.use('/tenis', tenisRouter);
 app.use('/vendas', vendaRouter);
-
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
 
 module.exports = app;
