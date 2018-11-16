@@ -44,24 +44,26 @@
             <input matInput type="number" placeholder="Informe o valor do tênis" required name="valor" [(ngModel)]="tenis.valor">
         </mat-form-field>
 
-        <mat-card style="width: 98%">
-            Estoque
+        <mat-card style="width: 25%">
+            <h2>Estoque</h2>
 
             <div *ngFor="let item of tenis.estoque">
-                <mat-form-field>
-                    <mat-label>Tamanho</mat-label>
-                    <input matInput type="number" placeholder="Informe o tamanho do tênis" required name="tamanho"
-                        value="item.tamanho">
-                </mat-form-field>
+                <div style="border: 1px solid black; margin-top: 6px; padding: 0px 10px">
+                    <mat-form-field style="display: block">
+                        <mat-label>Tamanho</mat-label>
+                        <input matInput type="number" placeholder="Informe o tamanho do tênis" required name="tamanho"
+                            value="{{item.tamanho}}">
+                    </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>Quantidade disponível</mat-label>
-                    <input matInput type="number" placeholder="Informe a quantidade disponível" required name="quantidade_disponivel"
-                        value="item.quantidade_disponivel">
-                </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Quantidade disponível</mat-label>
+                        <input matInput type="number" placeholder="Informe a quantidade disponível" required name="quantidade_disponivel"
+                            value="{{item.quantidade_disponivel}}">
+                    </mat-form-field>
+                </div>
             </div>
 
-            <button mat-mini-fab (click)="adicionarItem()" style="float: right; background-color: #00C853">
+            <button mat-mini-fab (click)="adicionarItem()" style="float: right; background-color: #00C853; margin-top: 10px;">
                 <mat-icon aria-label="Adicionar novo item">add</mat-icon>
             </button>
         </mat-card>

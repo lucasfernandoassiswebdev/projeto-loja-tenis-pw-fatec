@@ -36,7 +36,7 @@ const routes: Routes = [
   { path: 'venda/:id', component: VendaFormComponent },
   { path: 'tenis', component: TenisListComponent },
   { path: 'tenis/new', component: TenisFormComponent },
-  { path: 'tenis:id', component: TenisFormComponent }
+  { path: 'tenis/:id', component: TenisFormComponent }
 ];
 
 @NgModule({

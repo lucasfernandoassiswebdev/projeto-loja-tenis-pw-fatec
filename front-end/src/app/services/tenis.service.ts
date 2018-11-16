@@ -21,6 +21,7 @@ export class TenisService {
   }
 
   put(id, tenis) {
+    console.log(tenis);
     return this.http.put('http://localhost:3000/tenis/' + id, tenis);
   }
 
