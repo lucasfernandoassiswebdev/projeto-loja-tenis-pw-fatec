@@ -21,7 +21,7 @@ export class MarcaListComponent implements OnInit {
   ngOnInit() {
     this.marcaService.get().subscribe(
       data => this.marcas = data,
-      error => console.error(error.message)
+      error => this.snackBar.open('Erro ao listar marcas ' + error.message, 'OK')
     );
   }
 
@@ -32,7 +32,7 @@ export class MarcaListComponent implements OnInit {
           this.snackBar.open('Marca excluída com sucesso', 'Ok', { duration: 2000 });
           this.ngOnInit();
         },
-        erro => this.snackBar.open('ERRO AO EXCLUIR MARCA', 'OK'));
+        error => this.snackBar.open(error.error.message, 'OK'));
     }
   }
 }

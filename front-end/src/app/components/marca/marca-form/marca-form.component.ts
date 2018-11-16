@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MarcaService } from '../../../services/marca.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-marca-form',
@@ -12,7 +13,8 @@ export class MarcaFormComponent implements OnInit {
   constructor(
     private router: Router,
     private activeRoute: ActivatedRoute,
-    private marcaService: MarcaService
+    private marcaService: MarcaService,
+    private snackBar: MatSnackBar
   ) { }
 
   public titulo: String = 'Nova Marca';
@@ -27,7 +29,7 @@ export class MarcaFormComponent implements OnInit {
               this.marca = obj;
               this.titulo = 'Editar Marca';
             },
-            erro => console.error(erro)
+            error => this.snackBar.open('Erro ao buscar dados da marca ' + error.message, 'OK')
           )
         }
       }
@@ -43,13 +45,10 @@ export class MarcaFormComponent implements OnInit {
     }
     retorno.subscribe(
       () => {
-        alert('Marca salvo com sucesso');
+        this.snackBar.open('Marca salva com sucesso', 'OK', { duration: 2000 })
         this.router.navigate(['marca']);
       },
-      erro => {
-        alert('Erro ao salvar a marca: ' + erro.message);
-        console.error(erro);
-      }
+      error => this.snackBar.open(error.error.message, 'OK')
     );
   }
 
