@@ -1,16 +1,63 @@
 <mat-form-field>
   <mat-label>Data da venda</mat-label>
-  <input matInput [matDatepicker]="data" placeholder="Selecione a data da venda" required name="data" [(ngModel)]="compra.data">
-  <mat-datepicker-toggle matSuffix [for]="data"></mat-datepicker-toggle>
-  <mat-datepicker #dataVenda></mat-datepicker>
+  <input matInput [matDatepicker]="picker" placeholder="Data da venda" [(ngModel)]="venda.data">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
-
+&nbsp;
 <mat-form-field>
   <mat-label>Funcionário</mat-label>
-  <mat-select placeholder="Selecione o funcionário que efetuou a venda" required name="funcionario" [(ngModel)]="compra.funcoinario">
-      <mat-option *ngFor="let funcionario of funcionarios" [value]="funcionario._id">
-          {{ marca.nome }}
-      </mat-option>
+  <mat-select placeholder="Selecione o funcionário que efetuou a venda" required name="funcionario" [(ngModel)]="venda.funcionario._id">
+    <mat-option *ngFor="let funcionario of funcionarios" [value]="funcionario._id">
+      {{ funcionario.nome }}
+    </mat-option>
   </mat-select>
 </mat-form-field>
 
+<mat-card>
+  <mat-card-content>
+    <h2>Tênis</h2>
+
+    <mat-form-field>
+      <mat-label>Tênis</mat-label>
+      <mat-select placeholder="Selecione o tênis da venda" required name="tenis" [(ngModel)]="venda.tenis_atual">
+        <mat-option *ngFor="let tenis_venda of tenis_disponiveis" [value]="tenis_venda._id">
+          {{ tenis_venda.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+      <mat-label>Quantidade</mat-label>
+      <input matInput type="number" placeholder="Informe a quantidade vendida deste par" required name="quantidade_vendida"
+        [(ngModel)]="venda.quantidade">
+    </mat-form-field>
+
+    <button mat-mini-fab (click)="adicionarItem()" style="margin-left: 5px; background-color: #00C853">
+      <mat-icon aria-label="Adicionar novo item">add</mat-icon>
+    </button>
+
+    <table>
+      <tr>
+        <th>Tênis</th>
+        <th>Quantidade</th>
+        <th></th>
+      </tr>
+
+      <tr *ngFor="let item of venda.tenis_venda; index as i">
+        <td>{{ item.tenis.nome }}</td>
+        <td>{{ item.quantidade }}</td>
+        <td>
+          <button mat-mini-fab class="deleteButton" (click)="removerItem(i)">
+            <mat-icon aria-label="Excluir item">delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </table>
+  </mat-card-content>
+</mat-card>
+
+<mat-card-actions class="center-buttons">
+  <button mat-flat-button color="primary" (click)="salvar()">Salvar</button>
+  <button mat-flat-button style="margin-left: 5px; background-color: #D50000; color: white" (click)="cancelar()">Cancelar</button>
+</mat-card-actions>

@@ -13,6 +13,7 @@ export class VendaListComponent implements OnInit {
     'id',
     'data',
     'funcionario',
+    'cargo',
     'buttons'
   ];
 

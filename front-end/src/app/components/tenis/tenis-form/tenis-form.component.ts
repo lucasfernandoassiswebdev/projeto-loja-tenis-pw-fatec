@@ -29,10 +29,7 @@ export class TenisFormComponent implements OnInit {
     marca: {},
     tipo_cadarco: {},
     tipo_sola: {},
-    estoque: [{
-      tamanho: 0,
-      quantidade_disponivel: 0
-    }],
+    tenis_venda: [],
     tamanho: 0,
     quantidade_disponivel: 0
   };
@@ -46,7 +43,6 @@ export class TenisFormComponent implements OnInit {
         if (params.id) {
           this.tenisService.getById(params.id).subscribe(
             obj => {
-              console.log(obj);
               this.tenis = obj;
               this.titulo = 'Editar Tênis';
             },
@@ -97,13 +93,13 @@ export class TenisFormComponent implements OnInit {
   }
 
   adicionarItem() {
-    this.tenis.estoque.push({
+    this.tenis.tenis_venda.push({
       tamanho: this.tenis.tamanho,
       quantidade_disponivel: this.tenis.quantidade_disponivel
     });
   }
 
   removerItem(i) {
-    this.tenis.estoque.splice(i, 1);
+    this.tenis.tenis_venda.splice(i, 1);
   }
 }
