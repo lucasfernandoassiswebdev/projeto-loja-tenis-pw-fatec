@@ -29,7 +29,7 @@ export class TenisFormComponent implements OnInit {
     marca: {},
     tipo_cadarco: {},
     tipo_sola: {},
-    tenis_venda: [],
+    estoque: [],
     tamanho: 0,
     quantidade_disponivel: 0
   };
@@ -93,13 +93,13 @@ export class TenisFormComponent implements OnInit {
   }
 
   adicionarItem() {
-    this.tenis.tenis_venda.push({
+    this.tenis.estoque.push({
       tamanho: this.tenis.tamanho,
       quantidade_disponivel: this.tenis.quantidade_disponivel
     });
   }
 
   removerItem(i) {
-    this.tenis.tenis_venda.splice(i, 1);
+    this.tenis.estoque.splice(i, 1);
   }
 }
