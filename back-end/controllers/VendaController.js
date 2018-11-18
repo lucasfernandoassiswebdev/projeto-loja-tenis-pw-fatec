@@ -12,6 +12,10 @@ exports.post = async (req, res) => {
     return await vendaService.post(req, res);
 };
 
+exports.put = async (req, res) => {
+    return await vendaService.put(req, res);
+};
+
 exports.delete = async (req, res) => {
     return await vendaService.delete(req, res);
 };

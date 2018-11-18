@@ -38,7 +38,6 @@ export class VendaFormComponent implements OnInit {
         if (params.id) {
           this.vendaService.getById(params.id).subscribe(
             obj => {
-              console.log(obj);
               this.venda = obj;
               this.titulo = 'Editar Venda';
             },
@@ -61,6 +60,13 @@ export class VendaFormComponent implements OnInit {
 
   salvar() {
     let retorno: any;
+    
+    this.venda.funcionario = this.venda.funcionario._id;
+    this.venda.tenis_venda.forEach(function(item){
+      if(item.tenis != undefined && item.tenis.id != undefined)
+        item.tenis = item.tenis.id
+    });
+
     if (this.venda._id) {
       retorno = this.vendaService.put(this.venda._id, this.venda);
     } else {
@@ -104,5 +110,5 @@ export class VendaFormComponent implements OnInit {
 
   removerItem(i) {
     this.venda.tenis_venda.splice(i, 1);
-  }  
+  }
 }

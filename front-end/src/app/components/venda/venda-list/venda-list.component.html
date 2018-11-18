@@ -21,7 +21,7 @@
 
     <ng-container matColumnDef="funcionario">
       <th mat-header-cell *matHeaderCellDef>Funcionario</th>
-      <td mat-cell *matCellDef="let venda">{{venda.funcionario.nome}} - {{venda.funcionario.cpf}}{{venda.funcionario.cargo.nome}}</td>
+      <td mat-cell *matCellDef="let venda">{{venda.funcionario.nome}} - {{venda.funcionario.cpf}}</td>
     </ng-container>
 
     <ng-container matColumnDef="cargo">
@@ -32,10 +32,10 @@
     <ng-container matColumnDef="buttons">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let venda">
-        <a mat-icon-button color="primary" href="venda/{{ venda._id }}">
+        <a mat-icon-button color="primary" [routerLink]="venda._id">
           <mat-icon aria-label="Editar">edit</mat-icon>
         </a>
-        <a mat-icon-button class="deleteButton" style="margin-left: 5px">
+        <a mat-icon-button class="deleteButton" style="margin-left: 5px" (click)="excluir(venda._id)"> 
           <mat-icon aria-label="Excluir">delete</mat-icon>
         </a>
       </td>
