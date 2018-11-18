@@ -50,12 +50,14 @@
 
                 <mat-form-field>
                     <mat-label>Tamanho</mat-label>
-                    <input matInput type="number" placeholder="Informe o tamanho do par" required name="tamanho" [(ngModel)]="tenis.tamanho">
+                    <input matInput type="number" placeholder="Informe o tamanho do par" required name="tamanho"
+                        [(ngModel)]="tenis.tamanho">
                 </mat-form-field>
                 &nbsp;
                 <mat-form-field>
                     <mat-label>Quantidade disponível</mat-label>
-                    <input matInput type="number" placeholder="Informe a quantidade disponível do par" required name="quantidade_disponivel" [(ngModel)]="tenis.quantidade_disponivel">
+                    <input matInput type="number" placeholder="Informe a quantidade disponível do par" required name="quantidade_disponivel"
+                        [(ngModel)]="tenis.quantidade_disponivel">
                 </mat-form-field>
 
                 <button mat-mini-fab (click)="adicionarItem()" style="margin-left: 5px; background-color: #00C853">
@@ -73,11 +75,11 @@
                         <td>{{ item.tamanho }}</td>
                         <td>{{ item.quantidade_disponivel }}</td>
                         <td>
-                            <button mat-mini-fab class="deleteButton" (click)="removerItem(i)">
+                            <button mat-icon-button class="deleteButton" (click)="removerItem(i)">
                                 <mat-icon aria-label="Excluir item">delete</mat-icon>
                             </button>
                         </td>
-                    </tr>                 
+                    </tr>
                 </table>
             </mat-card-content>
         </mat-card>

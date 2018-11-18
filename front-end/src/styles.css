@@ -36,7 +36,7 @@ body {
 
 .deleteButton {
     margin-left: 5px !important;
-    background-color: #E53935 !important;
+    color: #E53935 !important;
 }
 
 td {

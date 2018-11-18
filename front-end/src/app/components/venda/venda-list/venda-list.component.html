@@ -32,10 +32,10 @@
     <ng-container matColumnDef="buttons">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let venda">
-        <a mat-mini-fab color="primary" href="venda/{{ venda._id }}">
+        <a mat-icon-button color="primary" href="venda/{{ venda._id }}">
           <mat-icon aria-label="Editar">edit</mat-icon>
         </a>
-        <a mat-mini-fab style="margin-left: 5px; background-color: #D50000">
+        <a mat-icon-button class="deleteButton" style="margin-left: 5px">
           <mat-icon aria-label="Excluir">delete</mat-icon>
         </a>
       </td>
