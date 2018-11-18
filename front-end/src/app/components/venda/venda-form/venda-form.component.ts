@@ -60,10 +60,10 @@ export class VendaFormComponent implements OnInit {
 
   salvar() {
     let retorno: any;
-    
+
     this.venda.funcionario = this.venda.funcionario._id;
-    this.venda.tenis_venda.forEach(function(item){
-      if(item.tenis != undefined && item.tenis.id != undefined)
+    this.venda.tenis_venda.forEach(function (item) {
+      if (item.tenis != undefined && item.tenis.id != undefined)
         item.tenis = item.tenis.id
     });
 
@@ -92,6 +92,8 @@ export class VendaFormComponent implements OnInit {
   adicionarItem() {
     var nome: string;
     var screen = this.venda;
+    var vend = this;
+    var add = true;
 
     this.tenis_disponiveis.forEach(function (item) {
       if (item._id == screen.tenis_atual) {
@@ -99,13 +101,22 @@ export class VendaFormComponent implements OnInit {
       }
     });
 
-    this.venda.tenis_venda.push({
-      tenis: {
-        id: this.venda.tenis_atual,
-        nome: nome
-      },
-      quantidade: this.venda.quantidade
+    this.venda.tenis_venda.forEach(function (item) {
+      if (item.tenis._id == screen.tenis_atual || (item.tenis._id != undefined && item.tenis._id == screen.tenis_atual)) {
+        vend.snackBar.open('Este mesmo tenis já está cadastrado no estoque, remova-o antes', 'OK');
+        add = false;
+      }
     });
+
+    if (add) {
+      this.venda.tenis_venda.push({
+        tenis: {
+          id: this.venda.tenis_atual,
+          nome: nome
+        },
+        quantidade: this.venda.quantidade
+      });
+    }
   }
 
   removerItem(i) {
